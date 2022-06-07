@@ -1,0 +1,68 @@
+@use "variables" as variables;
+@use "mixins" as mixins;
+
+.header {
+    background-color: variables.$color-bg-dark;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1.6rem 0 0 0;
+
+    @include mixins.tablet {
+        flex-direction: row;
+        padding: 3.6rem 3.6rem 0 3.6rem;
+    }
+
+    &__logo {
+        font-size: 2.4rem;
+        line-height: 2.2rem;
+        font-weight: 400;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        min-width: 12rem;
+        min-height: 2rem;
+
+        @include mixins.tablet {
+            padding: 1.5rem 1.5rem 3rem 0;
+            font-size: 3.6rem;
+            margin-right: 1.5rem;
+        }
+
+    }
+
+    &__navigation {
+        display: flex;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+        font-weight: 400;
+
+        // @include mixins.tablet {
+        //     font-size: 1.4rem;
+        // }
+    }
+
+    &__link {
+        color: variables.$color-inactive-link;
+        flex: 1;
+        padding: 1.5rem;
+
+
+        @include mixins.tablet {
+            margin-left: 1.5rem;
+        }
+
+
+        &:hover {
+            border-bottom: 2px solid #FFFFFF;
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+        &--active {
+            color: #FFFFFF;
+            border-bottom: 2px solid #FFFFFF;
+            font-weight: 700;
+        }
+    }
+
+}
