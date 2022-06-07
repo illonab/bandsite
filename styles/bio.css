@@ -56,4 +56,7 @@ a:active {
   src: url("../assets/font/AvenirNextLTPro-Bold.otf") format("opeantype");
   font-weight: 700;
   font-style: normal;
+}
+body {
+  font-family: "Avenir Next";
 }/*# sourceMappingURL=bio.css.map */

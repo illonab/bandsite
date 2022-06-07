@@ -1,3 +1,8 @@
 @use "partials/reset" as *;
 @use "partials/fonts" as *;
 @use "partials/mixins" as mixins;
+
+
+body {
+    font-family: "Avenir Next"
+}
