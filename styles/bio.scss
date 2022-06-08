@@ -251,3 +251,23 @@ body {
         grid-area: copyright;
     }
 }
+
+.employee {
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+
+    &__wrapper {
+        margin: 1.6rem 0;
+
+    }
+
+    &__name {
+        font-weight: 600;
+    }
+
+    &__position {
+        font-weight: 600;
+    }
+
+    &__address {}
+}

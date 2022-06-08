@@ -335,4 +335,18 @@ body {
 }
 .footer__copyright {
   grid-area: copyright;
+}
+
+.employee {
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
+.employee__wrapper {
+  margin: 1.6rem 0;
+}
+.employee__name {
+  font-weight: 600;
+}
+.employee__position {
+  font-weight: 600;
 }/*# sourceMappingURL=bio.css.map */
