@@ -192,3 +192,62 @@ body {
 
     }
 }
+
+.footer {
+    background-color: #323232;
+    color: #FFFFFF;
+    padding: 0 1.6rem;
+
+    @include mixins.tablet {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: "socials socials logo"
+            "employee employee employee"
+            "copyright copyright copyright";
+    }
+
+    @include mixins.desktop {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: "socials socials socials logo"
+            "employee employee employee logo"
+            "copyright copyright copyright logo";
+    }
+
+    &__socials {
+        grid-area: socials;
+    }
+
+    &__title {
+        font-size: 2.4rem;
+        line-height: 3.2rem;
+        font-weight: 600;
+        padding: 2.4rem 0 1.6rem 0;
+
+        @include mixins.tablet {
+            padding: 4.8rem 0 3.6rem 0;
+            font-size: 3.6rem;
+            line-height: 4.4rem;
+        }
+    }
+
+    &__icons {}
+
+    &__icon-link {
+        &+& {
+            margin-left: 1.6rem;
+        }
+    }
+
+    &__icon {}
+
+    &__logo {
+        grid-area: logo;
+    }
+
+    &__copyright {
+        grid-area: copyright;
+    }
+}
