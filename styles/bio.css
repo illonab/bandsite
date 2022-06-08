@@ -224,4 +224,33 @@ body {
     line-height: 2.2rem;
     font-size: 1.4rem;
   }
+}
+
+.intro__image {
+  height: 100%;
+  width: 100%;
+}
+.intro__quote {
+  padding-top: 1.6rem;
+}
+.intro__text {
+  line-height: 2.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+@media screen and (min-width: 768px) {
+  .intro__text {
+    line-height: 3.2rem;
+    font-size: 2.4rem;
+  }
+}
+.intro__author {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+@media screen and (min-width: 768px) {
+  .intro__author {
+    line-height: 2.2rem;
+    font-size: 1.4rem;
+  }
 }/*# sourceMappingURL=bio.css.map */
