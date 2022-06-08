@@ -7,3 +7,56 @@
 body {
     font-family: "Avenir Next"
 }
+
+.banner {
+    background-image: url(../assets/images/hero-bio.jpg);
+    background-position: center center;
+    background-size: cover;
+    min-height: 100%;
+    max-width: 100%;
+    height: 25rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1.6rem;
+    position: relative;
+
+    @include mixins.tablet {
+        height: 44rem;
+        padding: 0 3.6rem;
+    }
+
+    @include mixins.desktop {
+        padding: 0 6.3rem;
+        margin: 0 auto;
+    }
+
+    &::after {
+        content: '';
+        background-color: #323232;
+        position: absolute;
+        height: 25rem;
+        min-height: 100%;
+        max-width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.5;
+        // z-index: -1;
+        background-size: cover;
+    }
+
+    &__content {
+        font-size: 2.4rem;
+        line-height: 3.2rem;
+        font-weight: 600;
+        color: #FFFFFF;
+        margin: 0;
+        z-index: 1;
+
+        @include mixins.tablet {
+            font-size: 6rem;
+            line-height: 6.8rem;
+        }
+    }
+}
