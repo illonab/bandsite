@@ -4,7 +4,6 @@
 .header {
     background-color: variables.$color-bg-dark;
 
-
     @include mixins.tablet {
         height: 8rem;
     }
@@ -29,7 +28,6 @@
         }
 
     }
-
 }
 
 .navigation {
@@ -52,32 +50,23 @@
 
     &__link {
         color: variables.$color-inactive-link;
-        padding: 1.6rem;
+        padding: 1.6rem 0;
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
-
+        border-bottom: 3px solid transparent;
 
         @include mixins.tablet {
-            margin-left: 1.6rem;
-
+            margin-left: 3.2rem;
+            margin-right: 1.6rem;
         }
 
-        &:hover {
-            border-bottom: 2px solid #FFFFFF;
-            color: #FFFFFF;
-            font-weight: 600;
-        }
-
+        &:hover,
         &--active {
             color: #FFFFFF;
-            border-bottom: 2px solid #FFFFFF;
+            border-bottom: 3px solid #FFFFFF;
             font-weight: 600;
-
         }
     }
-
-
-
 }

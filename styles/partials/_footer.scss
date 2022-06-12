@@ -1,0 +1,114 @@
+@use "variables" as variables;
+@use "mixins" as mixins;
+
+.footer {
+    background-color: #323232;
+    color: #FFFFFF;
+    @include mixins.section-spacing;
+
+    &__wrapper {
+        @include mixins.wrapper;
+
+
+        @include mixins.tablet {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto auto;
+            grid-template-areas: "social-title social-icons logo"
+                "employee employee employee"
+                "copyright copyright copyright";
+        }
+
+        @include mixins.desktop {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto auto;
+            grid-template-areas: "social-title social-icons social-icons logo"
+                "employee employee employee employee"
+                "copyright copyright copyright copyright";
+        }
+
+    }
+
+    &__title {
+        @include mixins.title;
+
+        @include mixins.tablet {
+            padding-bottom: 0;
+            grid-area: social-title;
+        }
+    }
+
+    &__icons {
+        display: flex;
+        align-items: center;
+
+        @include mixins.tablet {
+            grid-area: social-icons;
+        }
+    }
+
+    &__icon {
+        width: 3rem;
+        height: 3rem;
+        transition: filter 250ms linear;
+
+        &:hover {
+            filter: invert(28%) sepia(26%) saturate(4032%) hue-rotate(282deg) brightness(84%) contrast(85%);
+        }
+    }
+
+    &__icon-link {
+        &+& {
+            margin-left: 1.6rem;
+
+            @include mixins.tablet {
+                margin-left: 3.6rem;
+            }
+        }
+    }
+
+    &__logo {
+        grid-area: logo;
+        display: flex;
+        align-items: center;
+        padding-top: 4.8rem;
+        width: 12rem;
+        height: 2rem;
+
+        @include mixins.tablet {
+            padding-top: 0;
+            height: 100%;
+        }
+    }
+
+    &__copyright {
+        grid-area: copyright;
+        margin-top: 2.4rem;
+        @include mixins.text;
+
+        @include mixins.tablet {
+            margin-top: 4.8rem;
+        }
+    }
+}
+
+.employee {
+    @include mixins.text;
+
+    &__content {
+        margin: 1.6rem 0;
+
+        @include mixins.tablet {
+            margin: 3.6rem 0;
+        }
+    }
+
+    &__name {
+        font-weight: 600;
+    }
+
+    &__position {
+        font-weight: 600;
+    }
+}

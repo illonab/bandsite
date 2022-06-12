@@ -25,3 +25,34 @@
         width: 128rem;
     }
 }
+
+@mixin title {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    font-weight: 600;
+    padding-bottom: 1.6rem;
+
+    @include tablet {
+        padding-bottom: 3.6rem;
+        font-size: 3.6rem;
+        line-height: 4.4rem;
+    }
+}
+
+@mixin text {
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+
+    @include tablet {
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+    }
+}
+
+@mixin section-spacing {
+    padding: 2.4rem 0 1.6rem 0;
+
+    @include tablet {
+        padding: 4.8rem 0 3.6rem 0;
+    }
+}
