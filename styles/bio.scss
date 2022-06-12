@@ -307,9 +307,13 @@ body {
     &__copyright {
         grid-area: copyright;
         margin-top: 2.4rem;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
 
         @include mixins.tablet {
             margin-top: 4.8rem;
+            font-size: 1.4rem;
+            line-height: 2rem;
         }
     }
 }

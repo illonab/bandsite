@@ -471,10 +471,14 @@ body {
 .footer__copyright {
   grid-area: copyright;
   margin-top: 2.4rem;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
 }
 @media screen and (min-width: 768px) {
   .footer__copyright {
     margin-top: 4.8rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
   }
 }
 
