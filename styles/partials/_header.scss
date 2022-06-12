@@ -30,24 +30,33 @@
 
     }
 
-    &__navigation {
-        display: flex;
-        font-size: 1.3rem;
-        line-height: 1.8rem;
+}
 
-        @include mixins.tablet {
-            font-size: 1.4rem;
-            line-height: 2.2rem;
-        }
+.navigation {
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+
+    @include mixins.tablet {
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+    }
+
+    &__items {
+        display: flex;
+        height: 100%;
+    }
+
+    &__item {
+        flex: 1;
     }
 
     &__link {
         color: variables.$color-inactive-link;
-        flex: 1;
         padding: 1.6rem;
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 100%;
 
 
         @include mixins.tablet {
@@ -65,7 +74,10 @@
             color: #FFFFFF;
             border-bottom: 2px solid #FFFFFF;
             font-weight: 600;
+
         }
     }
+
+
 
 }
