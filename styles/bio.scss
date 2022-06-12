@@ -196,6 +196,12 @@ body {
         width: 100%;
         height: 100%;
         padding-bottom: 1.6rem;
+        filter: grayscale(1);
+        transition: filter 250ms linear;
+
+        &:hover {
+            filter: grayscale(0);
+        }
 
         @include mixins.tablet {
             padding-bottom: 0;
@@ -207,59 +213,104 @@ body {
 .footer {
     background-color: #323232;
     color: #FFFFFF;
-    padding: 0 1.6rem;
+    padding: 2.4rem 0;
 
     @include mixins.tablet {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-areas: "socials socials logo"
-            "employee employee employee"
-            "copyright copyright copyright";
+        padding: 4.8rem 0;
     }
 
-    @include mixins.desktop {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-areas: "socials socials socials logo"
-            "employee employee employee logo"
-            "copyright copyright copyright logo";
-    }
+    &__wrapper {
+        @include mixins.wrapper;
 
-    &__socials {
-        grid-area: socials;
+
+        @include mixins.tablet {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto auto;
+            grid-template-areas: "social-title social-icons logo"
+                "employee employee employee"
+                "copyright copyright copyright";
+        }
+
+        @include mixins.desktop {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto auto;
+            grid-template-areas: "social-title social-icons social-icons logo"
+                "employee employee employee employee"
+                "copyright copyright copyright copyright";
+        }
+
     }
 
     &__title {
         font-size: 2.4rem;
         line-height: 3.2rem;
         font-weight: 600;
-        padding: 2.4rem 0 1.6rem 0;
+        padding-bottom: 1.6rem;
 
         @include mixins.tablet {
-            padding: 4.8rem 0 3.6rem 0;
             font-size: 3.6rem;
             line-height: 4.4rem;
+            grid-area: social-title;
+            padding-bottom: 3.6;
         }
     }
 
-    &__icons {}
+    &__icons {
+        display: flex;
+        align-items: center;
+
+        @include mixins.tablet {
+            grid-area: social-icons;
+        }
+    }
+
+    &__icon {
+        width: 3rem;
+        height: 3rem;
+        transition: filter 250ms linear;
+
+        &:hover {
+            filter: invert(28%) sepia(26%) saturate(4032%) hue-rotate(282deg) brightness(84%) contrast(85%);
+        }
+
+    }
 
     &__icon-link {
+
         &+& {
             margin-left: 1.6rem;
+
+            @include mixins.tablet {
+                margin-left: 3.6rem;
+            }
         }
     }
-
-    &__icon {}
 
     &__logo {
         grid-area: logo;
+        display: flex;
+        align-items: center;
+        padding-top: 4.8rem;
+
+        @include mixins.tablet {
+            padding-top: 0;
+        }
+    }
+
+    &__image {
+        width: 12rem;
+        height: 2rem;
     }
 
     &__copyright {
         grid-area: copyright;
+        margin-top: 2.4rem;
+
+        @include mixins.tablet {
+            margin-top: 4.8rem;
+        }
     }
 }
 
@@ -267,9 +318,17 @@ body {
     font-size: 1.3rem;
     line-height: 1.8rem;
 
-    &__wrapper {
+    @include mixins.tablet {
+        font-size: 1.4rem;
+        line-height: 2rem;
+    }
+
+    &__content {
         margin: 1.6rem 0;
 
+        @include mixins.tablet {
+            margin: 3.6rem 0;
+        }
     }
 
     &__name {
@@ -279,6 +338,4 @@ body {
     &__position {
         font-weight: 600;
     }
-
-    &__address {}
 }
