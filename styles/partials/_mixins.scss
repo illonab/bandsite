@@ -9,3 +9,19 @@
         @content;
     }
 }
+
+@mixin wrapper {
+    height: 100%;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+
+    @include tablet {
+        padding: 0 3.6rem;
+        flex-direction: row;
+    }
+
+    @include desktop {
+        margin: 0 auto;
+        width: 128rem;
+    }
+}

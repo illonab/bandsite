@@ -3,29 +3,29 @@
 
 .header {
     background-color: variables.$color-bg-dark;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 1.6rem 0 0 0;
+
 
     @include mixins.tablet {
-        flex-direction: row;
-        padding: 3.6rem 3.6rem 0 3.6rem;
+        height: 8rem;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        @include mixins.wrapper;
+        padding: 1.6rem 0 0 0;
     }
 
     &__logo {
-        font-size: 2.4rem;
-        line-height: 2.2rem;
-        font-weight: 400;
-        color: #FFFFFF;
-        text-transform: uppercase;
-        min-width: 12rem;
-        min-height: 2rem;
+        width: 12rem;
+        height: 2rem;
+        margin: 0 auto;
 
         @include mixins.tablet {
-            padding: 1.5rem 1.5rem 3rem 0;
-            font-size: 3.6rem;
-            margin-right: 1.5rem;
+            height: 100%;
+            margin: 0 1.6rem 0 0;
+            display: flex;
+            align-items: center;
         }
 
     }
@@ -34,34 +34,37 @@
         display: flex;
         font-size: 1.3rem;
         line-height: 1.8rem;
-        font-weight: 400;
 
-        // @include mixins.tablet {
-        //     font-size: 1.4rem;
-        // }
+        @include mixins.tablet {
+            font-size: 1.4rem;
+            line-height: 2.2rem;
+        }
     }
 
     &__link {
         color: variables.$color-inactive-link;
         flex: 1;
-        padding: 1.5rem;
+        padding: 1.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
 
         @include mixins.tablet {
-            margin-left: 1.5rem;
-        }
+            margin-left: 1.6rem;
 
+        }
 
         &:hover {
             border-bottom: 2px solid #FFFFFF;
             color: #FFFFFF;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         &--active {
             color: #FFFFFF;
             border-bottom: 2px solid #FFFFFF;
-            font-weight: 700;
+            font-weight: 600;
         }
     }
 
