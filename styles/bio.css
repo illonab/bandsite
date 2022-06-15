@@ -280,6 +280,25 @@ a:active {
   font-weight: 600;
 }
 
+.cta-button {
+  background-color: #323232;
+  color: #FFF;
+  height: 4rem;
+  min-width: 15rem;
+  padding: 0 3.2rem;
+  border-radius: 4px;
+  border: 0;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
+@media screen and (min-width: 768px) {
+  .cta-button {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+  }
+}
+
 body {
   font-family: "Avenir Next";
 }
@@ -506,5 +525,119 @@ body {
 @media screen and (min-width: 768px) {
   .gallery__image {
     padding-bottom: 0;
+  }
+}
+
+.conversation__wrapper {
+  height: 100%;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
+@media screen and (min-width: 768px) {
+  .conversation__wrapper {
+    padding: 0 3.6rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .conversation__wrapper {
+    margin: 0 auto;
+    width: 128rem;
+  }
+}
+.conversation__title {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  font-weight: 600;
+  padding-bottom: 1.6rem;
+}
+@media screen and (min-width: 768px) {
+  .conversation__title {
+    padding-bottom: 3.6rem;
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+  }
+}
+.conversation__form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "avatar control" "avatar area" "avatar submit";
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid #E1E1E1;
+}
+.conversation__avatar {
+  grid-area: avatar;
+  max-height: 3.6rem;
+  max-width: 3.6rem;
+  border-radius: 50%;
+  margin-right: 1.6rem;
+}
+@media screen and (min-width: 768px) {
+  .conversation__avatar {
+    height: 4.8rem;
+    width: 4.8rem;
+  }
+}
+.conversation__control {
+  display: flex;
+  flex-direction: column;
+  grid-area: control;
+  font-size: 1rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: #AFAFAF;
+  text-transform: uppercase;
+  font-family: inherit;
+}
+@media screen and (min-width: 768px) {
+  .conversation__control {
+    font-size: 1.2rem;
+  }
+}
+.conversation__control--area {
+  grid-area: area;
+  margin-top: 1.6rem;
+  resize: none;
+}
+@media screen and (min-width: 768px) {
+  .conversation__control--area {
+    margin-top: 3.6rem;
+  }
+}
+.conversation__input {
+  min-height: 3.6rem;
+  width: 100%;
+  border-radius: 4px;
+  padding: 1.2rem;
+  margin-top: 0.4rem;
+  border: 1px solid #E1E1E1;
+  font-family: inherit;
+}
+.conversation__input--area {
+  resize: none;
+  height: 12rem;
+}
+.conversation__input::-moz-placeholder {
+  color: #000;
+}
+.conversation__input:-ms-input-placeholder {
+  color: #000;
+}
+.conversation__input::placeholder {
+  color: #000;
+}
+@media screen and (min-width: 768px) {
+  .conversation__input {
+    padding: 1.6rem;
+    height: 4.8rem;
+  }
+}
+.conversation__submit {
+  grid-area: submit;
+  margin-top: 1.6rem;
+}
+@media screen and (min-width: 768px) {
+  .conversation__submit {
+    margin-top: 3.6rem;
   }
 }/*# sourceMappingURL=bio.css.map */
