@@ -72,7 +72,6 @@ a:active {
   padding-left: 1.6rem;
   padding-right: 1.6rem;
   padding: 1.6rem 0 0 0;
-  flex-direction: row;
 }
 @media screen and (min-width: 768px) {
   .header__wrapper {
@@ -83,6 +82,11 @@ a:active {
   .header__wrapper {
     margin: 0 auto;
     width: 128rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .header__wrapper {
+    flex-direction: row;
   }
 }
 .header__logo {
@@ -284,8 +288,6 @@ a:active {
   background-color: #323232;
   color: #FFF;
   height: 4rem;
-  min-width: 15rem;
-  padding: 0 3.2rem;
   border-radius: 4px;
   border: 0;
   text-transform: uppercase;
@@ -298,13 +300,14 @@ a:active {
     line-height: 2.2rem;
   }
 }
-
-body {
-  font-family: "Avenir Next";
+@media screen and (min-width: 768px) {
+  .cta-button {
+    min-width: 15rem;
+    padding: 0 3.2rem;
+  }
 }
 
 .banner {
-  background-image: url(../assets/images/hero-bio.jpg);
   background-position: center center;
   background-size: cover;
   height: 19rem;
@@ -351,6 +354,10 @@ body {
     width: 128rem;
   }
 }
+.banner__wrapper--shows {
+  flex-direction: column;
+  align-items: flex-start;
+}
 .banner__content {
   font-size: 2.4rem;
   line-height: 3.2rem;
@@ -364,6 +371,32 @@ body {
     font-size: 6rem;
     line-height: 6.8rem;
   }
+}
+.banner__text {
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  color: #FFFFFF;
+  z-index: 1;
+}
+@media screen and (min-width: 768px) {
+  .banner__text {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+  }
+}
+.banner__iframe {
+  z-index: 1;
+}
+
+body {
+  font-family: "Avenir Next";
+}
+
+.banner {
+  background-image: url(../assets/images/hero-bio.jpg);
+}
+.banner--shows {
+  background-image: url(/assets/images/hero-shows.jpg);
 }
 
 .about {
@@ -567,10 +600,12 @@ body {
 }
 .conversation__avatar {
   grid-area: avatar;
-  max-height: 3.6rem;
-  max-width: 3.6rem;
+  height: 3.6rem;
+  width: 3.6rem;
   border-radius: 50%;
   margin-right: 1.6rem;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 @media screen and (min-width: 768px) {
   .conversation__avatar {
@@ -613,9 +648,15 @@ body {
   border: 1px solid #E1E1E1;
   font-family: inherit;
 }
+.conversation__input:focus {
+  border: 1px solid #000;
+}
 .conversation__input--area {
   resize: none;
   height: 12rem;
+}
+.conversation__input--error {
+  border: 1px solid #D22D2D;
 }
 .conversation__input::-moz-placeholder {
   color: #000;
@@ -629,7 +670,7 @@ body {
 @media screen and (min-width: 768px) {
   .conversation__input {
     padding: 1.6rem;
-    height: 4.8rem;
+    min-height: 4.8rem;
   }
 }
 .conversation__submit {
@@ -640,4 +681,52 @@ body {
   .conversation__submit {
     margin-top: 3.6rem;
   }
+}
+.conversation__comments {
+  padding: 1.6rem 0;
+}
+.conversation__comment {
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: "circle group" "circle comment";
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid #E1E1E1;
+}
+@media screen and (min-width: 768px) {
+  .conversation__comment {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+  }
+}
+.conversation__circle {
+  height: 3.6rem;
+  width: 3.6rem;
+  border-radius: 50%;
+  margin-right: 1.6rem;
+  background-color: #E1E1E1;
+  grid-area: circle;
+}
+@media screen and (min-width: 768px) {
+  .conversation__circle {
+    height: 4.8rem;
+    width: 4.8rem;
+  }
+}
+.conversation__name {
+  font-weight: 600;
+  grid-area: name;
+}
+.conversation__group {
+  grid-area: group;
+  display: flex;
+  justify-content: space-between;
+}
+.conversation__date {
+  color: #AFAFAF;
+}
+.conversation__text {
+  margin-top: 1.6rem;
 }/*# sourceMappingURL=bio.css.map */

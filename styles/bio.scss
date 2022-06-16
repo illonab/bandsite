@@ -156,10 +156,11 @@ body {
 
     &__avatar {
         grid-area: avatar;
-        max-height: 3.6rem;
-        max-width: 3.6rem;
+        height: 3.6rem;
+        width: 3.6rem;
         border-radius: 50%;
         margin-right: 1.6rem;
+        object-fit: cover;
 
         @include mixins.tablet {
             height: 4.8rem;
@@ -193,10 +194,18 @@ body {
         border: 1px solid #E1E1E1;
         font-family: inherit;
 
+        &:focus {
+            border: 1px solid #000;
+        }
+
         &--area {
             resize: none;
             height: 12rem;
 
+        }
+
+        &--error {
+            border: 1px solid #D22D2D;
         }
 
         &::placeholder {
@@ -205,7 +214,7 @@ body {
 
         @include mixins.tablet {
             padding: 1.6rem;
-            height: 4.8rem;
+            min-height: 4.8rem;
 
         }
     }
@@ -219,26 +228,52 @@ body {
         }
     }
 
-    // &__comments {}
-
-    // &__comment {}
-
-    // &__circle {
-    max-height: 3.6rem;
-    max-width: 3.6rem;
-    border-radius: 50%;
-    margin-right: 1.6rem;
-    background-color: #E1E1E1;
-
-    @include mixins.tablet {
-        height: 4.8rem;
-        width: 4.8rem;
+    &__comments {
+        padding: 1.6rem 0
     }
-}
 
-// &__name {}
+    &__comment {
+        @include mixins.text;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas: "circle group"
+            "circle comment";
+        padding-bottom: 1.6rem;
+        border-bottom: 1px solid #E1E1E1;
+    }
 
-// &__date {}
+    &__circle {
+        height: 3.6rem;
+        width: 3.6rem;
+        border-radius: 50%;
+        margin-right: 1.6rem;
+        background-color: #E1E1E1;
+        grid-area: circle;
 
-// &__text {}
+        @include mixins.tablet {
+            height: 4.8rem;
+            width: 4.8rem;
+        }
+    }
+
+    &__name {
+        font-weight: 600;
+        grid-area: name;
+    }
+
+    &__group {
+        grid-area: group;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__date {
+        color: #AFAFAF;
+
+    }
+
+    &__text {
+        margin-top: 1.6rem;
+    }
 }
