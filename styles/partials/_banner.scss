@@ -1,0 +1,67 @@
+@use "mixins" as mixins;
+
+.banner {
+    background-position: center center;
+    background-size: cover;
+    height: 19rem;
+    position: relative;
+
+    @include mixins.tablet {
+        height: 45rem;
+    }
+
+    @include mixins.desktop {
+        height: 63rem;
+        background-position: center 20%;
+    }
+
+    &::after {
+        content: '';
+        background-color: #323232;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.5;
+        background-size: cover;
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+
+        @include mixins.wrapper;
+
+        &--shows {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &__content {
+        font-size: 2.4rem;
+        line-height: 3.2rem;
+        font-weight: 600;
+        color: #FFFFFF;
+        margin: 0;
+        z-index: 1;
+
+        @include mixins.tablet {
+            font-size: 6rem;
+            line-height: 6.8rem;
+        }
+    }
+
+    &__text {
+        @include mixins.text;
+
+        color: #FFFFFF;
+        z-index: 1;
+    }
+
+    &__iframe {
+        z-index: 1;
+    }
+}
