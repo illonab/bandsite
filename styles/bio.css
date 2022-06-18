@@ -729,4 +729,146 @@ body {
 }
 .conversation__text {
   margin-top: 1.6rem;
+}
+
+.shows {
+  padding: 2.4rem 0 1.6rem 0;
+}
+@media screen and (min-width: 768px) {
+  .shows {
+    padding: 4.8rem 0 3.6rem 0;
+  }
+}
+.shows__wrapper {
+  height: 100%;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
+@media screen and (min-width: 768px) {
+  .shows__wrapper {
+    padding: 0 3.6rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .shows__wrapper {
+    margin: 0 auto;
+    width: 128rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .shows__wrapper {
+    display: flex;
+  }
+}
+.shows__labels {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .shows__labels {
+    display: flex;
+  }
+}
+.shows__show {
+  margin-left: -1.6rem;
+  margin-right: -1.6rem;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+  border-bottom: 1px solid #E1E1E1;
+  padding-bottom: 1.6rem;
+}
+@media screen and (min-width: 768px) {
+  .shows__show {
+    display: flex;
+    padding-top: 1.6rem;
+    align-items: center;
+  }
+}
+.shows__title {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  font-weight: 600;
+  padding-bottom: 1.6rem;
+}
+@media screen and (min-width: 768px) {
+  .shows__title {
+    padding-bottom: 3.6rem;
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .shows__title {
+    width: 20%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .shows__schedule {
+    width: 80%;
+  }
+}
+.shows__label {
+  font-size: 1rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: #AFAFAF;
+  text-transform: uppercase;
+  font-family: inherit;
+  margin-top: 1.6rem;
+}
+@media screen and (min-width: 768px) {
+  .shows__label {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .shows__label {
+    display: none;
+  }
+  .shows__label--tablet {
+    display: block;
+    width: 25%;
+  }
+}
+.shows__text {
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
+@media screen and (min-width: 768px) {
+  .shows__text {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .shows__text {
+    padding-right: 1.6rem;
+  }
+}
+.shows__text--date {
+  font-weight: 600;
+}
+@media screen and (min-width: 768px) {
+  .shows__text--date {
+    width: 25%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .shows__text--venue {
+    width: 25%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .shows__text--location {
+    width: 25%;
+  }
+}
+.shows__submit {
+  width: 100%;
+  margin-top: 1.6rem;
+}
+@media screen and (min-width: 768px) {
+  .shows__submit {
+    width: 25%;
+    margin-top: 0;
+  }
 }/*# sourceMappingURL=bio.css.map */

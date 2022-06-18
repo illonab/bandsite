@@ -277,3 +277,117 @@ body {
         margin-top: 1.6rem;
     }
 }
+
+
+.shows {
+    @include mixins.section-spacing;
+
+    &__wrapper {
+        @include mixins.wrapper;
+
+        @include mixins.desktop {
+            display: flex;
+
+        }
+
+    }
+
+    &__labels {
+        display: none;
+
+        @include mixins.tablet {
+            display: flex;
+        }
+    }
+
+    &__show {
+        margin-left: -1.6rem;
+        margin-right: -1.6rem;
+        padding-left: 1.6rem;
+        padding-right: 1.6rem;
+        border-bottom: 1px solid #E1E1E1;
+        padding-bottom: 1.6rem;
+
+        @include mixins.tablet {
+            display: flex;
+            padding-top: 1.6rem;
+            align-items: center;
+        }
+
+    }
+
+    &__title {
+        @include mixins.title;
+
+        @include mixins.desktop {
+            width: 20%;
+        }
+
+
+    }
+
+    &__schedule {
+
+        @include mixins.desktop {
+            width: 80%;
+        }
+
+    }
+
+    &__label {
+        @include mixins.text-label;
+
+
+        @include mixins.tablet {
+            display: none;
+
+            &--tablet {
+                display: block;
+                width: 25%;
+
+            }
+        }
+
+
+        margin-top: 1.6rem
+    }
+
+    &__text {
+        @include mixins.text;
+
+        @include mixins.tablet {
+            padding-right: 1.6rem;
+        }
+    }
+
+    &__text--date {
+        font-weight: 600;
+
+        @include mixins.tablet {
+            width: 25%;
+        }
+    }
+
+    &__text--venue {
+        @include mixins.tablet {
+            width: 25%;
+        }
+    }
+
+    &__text--location {
+        @include mixins.tablet {
+            width: 25%;
+        }
+    }
+
+    &__submit {
+        width: 100%;
+        margin-top: 1.6rem;
+
+        @include mixins.tablet {
+            width: 25%;
+            margin-top: 0;
+        }
+    }
+
+}
