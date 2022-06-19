@@ -1,6 +1,8 @@
 @use "mixins" as mixins;
 
 .conversation {
+    @include mixins.section-spacing;
+
     &__wrapper {
         @include mixins.wrapper;
     }
@@ -18,7 +20,6 @@
             width: 58rem;
             margin: 0 auto;
         }
-
     }
 
     &__avatar {
@@ -111,7 +112,6 @@
             width: 58rem;
             margin: 0 auto;
         }
-
     }
 
     &__comment {
@@ -132,7 +132,6 @@
 
     &__name {
         font-weight: 600;
-
     }
 
     &__top {
@@ -142,7 +141,6 @@
 
     &__date {
         color: #AFAFAF;
-
     }
 
     &__text {
