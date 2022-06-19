@@ -6,11 +6,6 @@
 @use "partials/cta-button" as *;
 @use "partials/banner" as *;
 
-
-body {
-    font-family: "Avenir Next"
-}
-
 .about {
     @include mixins.section-spacing;
 
