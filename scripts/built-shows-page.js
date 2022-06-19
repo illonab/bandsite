@@ -76,9 +76,8 @@ const displayShow = (show, container) => {
 
     container.append(showsShow);
 };
-const showsSchedule = document.querySelector('.shows__schedule');
 
-const displayShows = (shows, container) => {
+const displayShowsList = (shows, container) => {
     const showsLabels = document.createElement('div');
     showsLabels.classList.add('shows__labels');
     const showsDateLabelTablet = document.createElement('p');
@@ -98,7 +97,8 @@ const displayShows = (shows, container) => {
     }
 };
 
-displayShows(showsArray, showsSchedule);
+const showsSchedule = document.querySelector('.shows__schedule');
+displayShowsList(showsArray, showsSchedule);
 
 // I've used event delegation here - https://javascript.info/event-delegation
 showsSchedule.addEventListener('click', (e) => {
