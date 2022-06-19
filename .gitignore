@@ -6,3 +6,4 @@ package.json
 package-lock.json
 .eslintrc.json
 .editorconfig
+.vscode
