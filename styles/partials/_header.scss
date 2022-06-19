@@ -67,7 +67,11 @@
             margin-right: 1.6rem;
         }
 
-        &:hover,
+        &:hover {
+            color: #FFFFFF;
+            border-bottom: 3px solid #FFFFFF;
+        }
+
         &--active {
             color: #FFFFFF;
             border-bottom: 3px solid #FFFFFF;
