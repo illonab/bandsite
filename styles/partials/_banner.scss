@@ -3,12 +3,18 @@
 .banner {
     background-position: center center;
     background-size: cover;
-    height: 19rem;
+    height: 20rem;
     position: relative;
     background-image: url(../assets/images/hero-bio.jpg);
 
     &--shows {
         background-image: url(/assets/images/hero-shows.jpg);
+        padding: 2.4rem 0 1.6rem 0;
+        height: 30rem;
+
+        @include mixins.tablet {
+            padding: 4.8rem 0 3.6rem 0;
+        }
     }
 
     @include mixins.tablet {
@@ -42,10 +48,15 @@
         &--shows {
             flex-direction: column;
             align-items: flex-start;
+
+            @include mixins.desktop {
+                flex-direction: row;
+                align-items: center;
+            }
         }
     }
 
-    &__content {
+    &__title {
         font-size: 2.4rem;
         line-height: 3.2rem;
         font-weight: 600;
@@ -57,21 +68,32 @@
             font-size: 6rem;
             line-height: 6.8rem;
         }
+
+        &--shows {
+            width: 80%;
+            padding: 2.4rem 0;
+        }
     }
 
     &__text {
-        @include mixins.text;
-
         color: #FFFFFF;
         z-index: 1;
+        @include mixins.subheader;
     }
 
     &__iframe {
         z-index: 1;
         width: 100%;
-        height: 16.6rem;
         overflow: hidden;
         border: none;
+        height: 11.5rem;
+
+        @include mixins.tablet {
+            width: 40rem;
+        }
     }
 
+    &__content {
+        z-index: 1;
+    }
 }

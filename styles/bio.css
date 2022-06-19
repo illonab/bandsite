@@ -318,12 +318,19 @@ a:active {
 .banner {
   background-position: center center;
   background-size: cover;
-  height: 19rem;
+  height: 20rem;
   position: relative;
   background-image: url(../assets/images/hero-bio.jpg);
 }
 .banner--shows {
   background-image: url(/assets/images/hero-shows.jpg);
+  padding: 2.4rem 0 1.6rem 0;
+  height: 30rem;
+}
+@media screen and (min-width: 768px) {
+  .banner--shows {
+    padding: 4.8rem 0 3.6rem 0;
+  }
 }
 @media screen and (min-width: 768px) {
   .banner {
@@ -370,7 +377,13 @@ a:active {
   flex-direction: column;
   align-items: flex-start;
 }
-.banner__content {
+@media screen and (min-width: 1280px) {
+  .banner__wrapper--shows {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.banner__title {
   font-size: 2.4rem;
   line-height: 3.2rem;
   font-weight: 600;
@@ -379,29 +392,41 @@ a:active {
   z-index: 1;
 }
 @media screen and (min-width: 768px) {
-  .banner__content {
+  .banner__title {
     font-size: 6rem;
     line-height: 6.8rem;
   }
 }
+.banner__title--shows {
+  width: 80%;
+  padding: 2.4rem 0;
+}
 .banner__text {
-  font-size: 1.3rem;
-  line-height: 1.8rem;
   color: #FFFFFF;
   z-index: 1;
+  font-size: 1.4rem;
+  line-height: 2.2rem;
 }
 @media screen and (min-width: 768px) {
   .banner__text {
-    font-size: 1.4rem;
-    line-height: 2.2rem;
+    font-size: 2.4rem;
+    line-height: 3.2rem;
   }
 }
 .banner__iframe {
   z-index: 1;
   width: 100%;
-  height: 16.6rem;
   overflow: hidden;
   border: none;
+  height: 11.5rem;
+}
+@media screen and (min-width: 768px) {
+  .banner__iframe {
+    width: 40rem;
+  }
+}
+.banner__content {
+  z-index: 1;
 }
 
 .about {
@@ -451,6 +476,10 @@ a:active {
   .about__subheader {
     font-size: 2.4rem;
     line-height: 3.2rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .about__subheader {
     padding: 3.6rem 0 1.6rem 0;
   }
 }

@@ -68,3 +68,13 @@
         font-size: 1.2rem;
     }
 }
+
+@mixin subheader {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+
+    @include tablet {
+        font-size: 2.4rem;
+        line-height: 3.2rem;
+    }
+}
