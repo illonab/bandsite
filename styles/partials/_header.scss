@@ -1,8 +1,7 @@
-@use "variables" as variables;
 @use "mixins" as mixins;
 
 .header {
-    background-color: variables.$color-bg-dark;
+    background-color: #323232;
 
     @include mixins.tablet {
         height: 8rem;
@@ -54,7 +53,7 @@
     }
 
     &__link {
-        color: variables.$color-inactive-link;
+        color: #E1E1E1;
         padding: 1.6rem 0;
         display: flex;
         align-items: center;
