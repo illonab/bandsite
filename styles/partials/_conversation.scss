@@ -1,0 +1,149 @@
+@use "mixins" as mixins;
+
+.conversation {
+    @include mixins.section-spacing;
+
+    &__wrapper {
+        @include mixins.wrapper;
+    }
+
+    &__title {
+        @include mixins.title;
+    }
+
+    &__form {
+        display: flex;
+        padding-bottom: 1.6rem;
+        border-bottom: 1px solid #E1E1E1;
+
+        @include mixins.tablet {
+            width: 58rem;
+            margin: 0 auto;
+        }
+    }
+
+    &__avatar {
+        height: 3.6rem;
+        width: 3.6rem;
+        border-radius: 50%;
+        margin-right: 1.6rem;
+        object-fit: cover;
+        background-color: #E1E1E1;
+        flex: 0 0 auto;
+
+        @include mixins.tablet {
+            height: 4.8rem;
+            width: 4.8rem;
+        }
+
+        &--photo {
+            margin-top: 2.4rem;
+        }
+    }
+
+    &__controls {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    &__control {
+        display: flex;
+        flex-direction: column;
+        @include mixins.text-label;
+
+        &--area {
+            margin-top: 1.6rem;
+            resize: none;
+
+            @include mixins.tablet {
+                margin-top: 3.6rem;
+            }
+        }
+    }
+
+    &__input {
+        min-height: 3.6rem;
+        width: 100%;
+        border-radius: 4px;
+        padding: 1.2rem;
+        margin-top: 0.4rem;
+        border: 1px solid #E1E1E1;
+        font-family: inherit;
+
+        &:focus {
+            border: 1px solid #000;
+        }
+
+        &--area {
+            resize: none;
+            height: 12rem;
+
+        }
+
+        &--error {
+            border: 1px solid #D22D2D;
+        }
+
+        &::placeholder {
+            color: #000;
+        }
+
+        @include mixins.tablet {
+            padding: 1.6rem;
+            min-height: 4.8rem;
+
+        }
+    }
+
+    &__submit {
+        margin-top: 1.6rem;
+
+        @include mixins.tablet {
+            margin-top: 3.6rem;
+            align-self: flex-end;
+        }
+    }
+
+    &__comments {
+        padding: 1.6rem 0;
+
+        @include mixins.tablet {
+            width: 58rem;
+            margin: 0 auto;
+        }
+    }
+
+    &__comment {
+        @include mixins.text;
+        display: flex;
+
+        padding-bottom: 1.6rem;
+        border-bottom: 1px solid #E1E1E1;
+
+        &+& {
+            margin-top: 1.6rem;
+        }
+    }
+
+    &__content {
+        flex: 1;
+    }
+
+    &__name {
+        font-weight: 600;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__date {
+        color: #AFAFAF;
+    }
+
+    &__text {
+        margin-top: 1.6rem;
+    }
+}

@@ -1,0 +1,120 @@
+@use "mixins" as mixins;
+
+.shows {
+    @include mixins.section-spacing;
+
+    &__wrapper {
+        @include mixins.wrapper;
+
+        @include mixins.desktop {
+            display: flex;
+
+        }
+    }
+
+    &__labels {
+        display: none;
+
+        @include mixins.tablet {
+            display: flex;
+            padding: 1.6rem 0;
+        }
+    }
+
+    &__show {
+        margin-left: -1.6rem;
+        margin-right: -1.6rem;
+        padding-left: 1.6rem;
+        padding-right: 1.6rem;
+        border-bottom: 1px solid #E1E1E1;
+        padding-bottom: 1.6rem;
+        transition: background-color 250ms linear;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #FAFAFA;
+        }
+
+        &:focus {
+            background-color: #FAFAFA;
+        }
+
+        @include mixins.tablet {
+            display: flex;
+            padding: 2.4rem 1.8rem;
+            align-items: center;
+        }
+
+        &--selected {
+            background-color: #E1E1E1;
+        }
+    }
+
+    &__title {
+        @include mixins.title;
+
+        @include mixins.desktop {
+            width: 20%;
+        }
+    }
+
+    &__schedule {
+        @include mixins.desktop {
+            width: 80%;
+        }
+    }
+
+    &__label {
+        @include mixins.text-label;
+
+        @include mixins.tablet {
+            display: none;
+
+            &--tablet {
+                display: block;
+                width: 25%;
+            }
+        }
+    }
+
+    &__text {
+        @include mixins.text;
+
+        @include mixins.tablet {
+            padding-right: 1.6rem;
+        }
+    }
+
+    &__text--date {
+        font-weight: 600;
+
+        @include mixins.tablet {
+            width: 25%;
+        }
+    }
+
+    &__text--venue {
+        @include mixins.tablet {
+            width: 25%;
+        }
+    }
+
+    &__text--location {
+        @include mixins.tablet {
+            width: 25%;
+        }
+    }
+
+    &__buy {
+        width: 100%;
+        margin-top: 1.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include mixins.tablet {
+            width: 25%;
+            margin-top: 0;
+        }
+    }
+}

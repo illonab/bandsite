@@ -1,2 +1,8 @@
 .DS_Store
 assets/CopyDeck
+node_modules
+.prettierrc.json
+package.json
+package-lock.json
+.eslintrc.json
+.editorconfig
