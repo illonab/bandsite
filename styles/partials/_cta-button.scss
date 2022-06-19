@@ -10,6 +10,12 @@
     cursor: pointer;
     width: 100%;
     @include mixins.text;
+    font-weight: 600;
+    transition: background-color 250ms linear;
+
+    &:hover {
+        background-color: #000;
+    }
 
     @include mixins.tablet {
         min-width: 15rem;

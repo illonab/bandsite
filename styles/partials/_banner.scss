@@ -79,10 +79,6 @@
         color: #FFFFFF;
         z-index: 1;
         @include mixins.subheader;
-
-        @include mixins.tablet {
-            font-weight: 600;
-        }
     }
 
     &__iframe {

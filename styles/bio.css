@@ -300,12 +300,17 @@ a:active {
   width: 100%;
   font-size: 1.3rem;
   line-height: 1.8rem;
+  font-weight: 600;
+  transition: background-color 250ms linear;
 }
 @media screen and (min-width: 768px) {
   .cta-button {
     font-size: 1.4rem;
     line-height: 2.2rem;
   }
+}
+.cta-button:hover {
+  background-color: #000;
 }
 @media screen and (min-width: 768px) {
   .cta-button {
@@ -406,16 +411,12 @@ a:active {
   z-index: 1;
   font-size: 1.4rem;
   line-height: 2.2rem;
+  font-weight: 600;
 }
 @media screen and (min-width: 768px) {
   .banner__text {
     font-size: 2.4rem;
     line-height: 3.2rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  .banner__text {
-    font-weight: 600;
   }
 }
 .banner__iframe {
@@ -823,6 +824,7 @@ a:active {
 @media screen and (min-width: 768px) {
   .shows__labels {
     display: flex;
+    padding: 1.6rem 0;
   }
 }
 .shows__show {
@@ -881,7 +883,6 @@ a:active {
   color: #AFAFAF;
   text-transform: uppercase;
   font-family: inherit;
-  margin-top: 1.6rem;
 }
 @media screen and (min-width: 768px) {
   .shows__label {

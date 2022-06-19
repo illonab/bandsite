@@ -13,7 +13,6 @@
 
     &__subheader {
         @include mixins.subheader;
-        font-weight: 600;
         padding: 1.6rem 0;
 
         @include mixins.tablet {

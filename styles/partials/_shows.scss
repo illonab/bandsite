@@ -17,6 +17,7 @@
 
         @include mixins.tablet {
             display: flex;
+            padding: 1.6rem 0;
         }
     }
 
@@ -74,8 +75,6 @@
                 width: 25%;
             }
         }
-
-        margin-top: 1.6rem
     }
 
     &__text {
