@@ -17,6 +17,13 @@ body {
     &--shows {
         background-image: url(/assets/images/hero-shows.jpg);
     }
+
+    &__iframe {
+        width: 100%;
+        height: 16.6rem;
+        overflow: hidden;
+        border: none;
+    }
 }
 
 .about {
