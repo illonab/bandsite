@@ -35,8 +35,8 @@
             background-color: #FAFAFA;
         }
 
-        &:focus {
-            background-color: #FAFAFA;
+        &--selected:hover {
+            background-color: #E1E1E1;
         }
 
         @include mixins.tablet {
