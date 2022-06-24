@@ -1,24 +1,21 @@
 const conversationComments = document.querySelector('.conversation__comments');
-const commentsArray = [
-    {
-        name: 'Connor Walton',
-        timestamp: new Date('02/17/2021'),
-        commentText:
-            'This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.'
-    },
-    {
-        name: 'Emilie Beach',
-        timestamp: new Date('01/09/2021'),
-        commentText:
-            'I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.'
-    },
-    {
-        name: 'Miles Acosta',
-        timestamp: new Date('12/20/2020'),
-        commentText:
-            "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
-    }
-];
+
+const apiKey = '1c327bae-89e0-482d-9116-47630351a017';
+const COMMENTS_API = `https://project-1-api.herokuapp.com/comments?api_key=${apiKey}`;
+
+let commentsArray = [];
+
+axios
+    .get(COMMENTS_API)
+    .then((data) => {
+        commentsArray = data.data;
+        commentsArray.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        displayCommentsList(commentsArray, conversationComments);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
 
 const monthDiff = (d1, d2) => {
     let months;
@@ -48,11 +45,13 @@ const displayComment = (comment, container) => {
     const conversationDate = document.createElement('time');
     conversationDate.classList.add('conversation__date');
 
-    if (monthDiff(comment.timestamp, new Date()) < 1) {
-        conversationDate.innerText = timeago.format(comment.timestamp);
-        conversationDate.setAttribute('title', comment.timestamp);
+    const timestampDate = new Date(comment.timestamp);
+
+    if (monthDiff(timestampDate, new Date()) < 1) {
+        conversationDate.innerText = timeago.format(timestampDate);
+        conversationDate.setAttribute('title', timestampDate);
     } else {
-        conversationDate.innerText = comment.timestamp.toLocaleDateString('en-US', {
+        conversationDate.innerText = timestampDate.toLocaleDateString('en-US', {
             month: '2-digit',
             day: '2-digit',
             year: 'numeric'
@@ -61,7 +60,7 @@ const displayComment = (comment, container) => {
 
     const conversationText = document.createElement('p');
     conversationText.classList.add('conversation__text');
-    conversationText.innerText = comment.commentText;
+    conversationText.innerText = comment.comment;
 
     conversationTop.append(conversationName, conversationDate);
     conversationContent.append(conversationTop, conversationText);
@@ -103,13 +102,26 @@ const formSubmit = (submitFormEvent) => {
     }
     const newComment = {
         name: form.name.value,
-        timestamp: new Date(),
-        commentText: form.textArea.value
+        timestamp: new Date().getTime(),
+        comment: form.textArea.value
     };
     commentsArray.unshift(newComment);
     displayCommentsList(commentsArray, conversationComments);
+
+    const newComment2 = {
+        name: form.name.value,
+        comment: form.textArea.value
+    };
+
+    axios({
+        header: {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        url: COMMENTS_API,
+        data: newComment2
+    });
     form.reset();
 };
 
 conversationForm.addEventListener('submit', formSubmit);
-displayCommentsList(commentsArray, conversationComments);
