@@ -1,35 +1,27 @@
-const showsArray = [
-    {
-        date: 'Mon Sept 06 2021',
-        venue: 'Ronald Lane',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Tue Sept 21 2021',
-        venue: 'Pier 3 East',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Fri Oct 15 2021',
-        venue: 'View Lounge',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Sat Nov 06 2021',
-        venue: 'Hyatt Agency',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Fri Nov 26 2021',
-        venue: 'Moscow Center',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Wed Dec 15 2021',
-        venue: 'Press Club',
-        location: 'San Francisco, CA'
-    }
-];
+const showsSchedule = document.querySelector('.shows__schedule');
+const apiKey = '1c327bae-89e0-482d-9116-47630351a017';
+const SHOWS_API = `https://project-1-api.herokuapp.com/showdates?api_key=${apiKey}`;
+
+let showsArray = [];
+
+axios
+    .get(SHOWS_API)
+    .then((data) => {
+        console.log(data);
+        showsArray = data.data;
+        displayShowsList(showsArray, showsSchedule);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
+const monthDiff = (d1, d2) => {
+    let months;
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth();
+    months += d2.getMonth();
+    return months <= 0 ? 0 : months;
+};
 
 const displayShow = (show, container) => {
     const showsShow = document.createElement('article');
@@ -41,7 +33,19 @@ const displayShow = (show, container) => {
 
     const showsTimeText = document.createElement('time');
     showsTimeText.classList.add('shows__text', 'shows__text--date');
-    showsTimeText.innerText = `${show.date}`;
+
+    const timestampDate = new Date(+show.date);
+
+    if (monthDiff(timestampDate, new Date()) < 1) {
+        showsTimeText.innerText = timeago.format(timestampDate);
+        showsTimeText.setAttribute('title', timestampDate);
+    } else {
+        showsTimeText.innerText = timestampDate.toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: 'numeric'
+        });
+    }
 
     const showsVenueLabel = document.createElement('p');
     showsVenueLabel.classList.add('shows__label');
@@ -49,7 +53,7 @@ const displayShow = (show, container) => {
 
     const showsVenueText = document.createElement('p');
     showsVenueText.classList.add('shows__text', 'shows__text--venue');
-    showsVenueText.innerText = `${show.venue}`;
+    showsVenueText.innerText = `${show.place}`;
 
     const showsLocationLabel = document.createElement('p');
     showsLocationLabel.classList.add('shows__label');
@@ -96,9 +100,6 @@ const displayShowsList = (shows, container) => {
         displayShow(show, container);
     }
 };
-
-const showsSchedule = document.querySelector('.shows__schedule');
-displayShowsList(showsArray, showsSchedule);
 
 // I've used event delegation here - https://javascript.info/event-delegation
 showsSchedule.addEventListener('click', (e) => {
