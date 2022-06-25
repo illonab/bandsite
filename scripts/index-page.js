@@ -7,10 +7,12 @@ let commentsArray = [];
 
 axios
     .get(COMMENTS_API)
-    .then((data) => {
-        commentsArray = data.data;
+    .then((response) => {
+        if (response.status !== 200) {
+            return;
+        }
+        commentsArray = response.data;
         commentsArray.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-
         displayCommentsList(commentsArray, conversationComments);
     })
     .catch((error) => {
@@ -62,10 +64,73 @@ const displayComment = (comment, container) => {
     conversationText.classList.add('conversation__text');
     conversationText.innerText = comment.comment;
 
+    const conversationAction = document.createElement('div');
+    conversationAction.classList.add('conversation__action');
+
+    const conversationLike = document.createElement('div');
+    conversationLike.classList.add('.conversation__like', 'like');
+
+    const likeBtn = document.createElement('button');
+    likeBtn.classList.add('like__btn');
+    likeBtn.dataset.commentId = comment.id;
+
+    const likeCounter = document.createElement('span');
+    likeCounter.classList.add('like__counter');
+    likeCounter.innerText = comment.likes;
+
+    const conversationDelete = document.createElement('button');
+    conversationDelete.classList.add('conversation__delete');
+    conversationDelete.dataset.commentId = comment.id;
+
     conversationTop.append(conversationName, conversationDate);
-    conversationContent.append(conversationTop, conversationText);
+    conversationLike.append(likeBtn, likeCounter);
+    conversationAction.append(conversationLike, conversationDelete);
+    conversationContent.append(conversationTop, conversationText, conversationAction);
     conversationComment.append(conversationAvatar, conversationContent);
     container.append(conversationComment);
+};
+conversationComments.addEventListener('click', (e) => {
+    if (e.target.classList.contains('conversation__delete')) {
+        axios
+            .delete(`https://project-1-api.herokuapp.com/comments/${e.target.dataset.commentId}?api_key=${apiKey}`)
+            .then((response) => {
+                if (response.status !== 200) {
+                    return;
+                }
+                commentsArray = commentsArray.filter((comment) => {
+                    return comment.id !== e.target.dataset.commentId;
+                });
+                displayCommentsList(commentsArray, conversationComments);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+});
+
+conversationComments.addEventListener('click', (e) => {
+    if (e.target.classList.contains('like__btn')) {
+        axios
+            .put(`https://project-1-api.herokuapp.com/comments/${e.target.dataset.commentId}/like?api_key=${apiKey}`)
+            .then((response) => {
+                commentsArray = replaceComment(commentsArray, e.target.dataset.commentId, response.data);
+                displayCommentsList(commentsArray, conversationComments);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+});
+
+const replaceComment = (currentCommentsArray, commentIdToReplace, newComment) => {
+    const newComments = [...currentCommentsArray];
+    const commentIndexToReplace = newComments.findIndex((comment) => {
+        if (comment.id === commentIdToReplace) {
+            return true;
+        }
+    });
+    newComments[commentIndexToReplace] = newComment;
+    return newComments;
 };
 
 const displayCommentsList = (commentsList, container) => {
@@ -100,15 +165,8 @@ const formSubmit = (submitFormEvent) => {
     if (!validateForm(form)) {
         return;
     }
-    const newComment = {
-        name: form.name.value,
-        timestamp: new Date().getTime(),
-        comment: form.textArea.value
-    };
-    commentsArray.unshift(newComment);
-    displayCommentsList(commentsArray, conversationComments);
 
-    const newComment2 = {
+    const newComment = {
         name: form.name.value,
         comment: form.textArea.value
     };
@@ -119,8 +177,18 @@ const formSubmit = (submitFormEvent) => {
         },
         method: 'POST',
         url: COMMENTS_API,
-        data: newComment2
-    });
+        data: newComment
+    })
+        .then((response) => {
+            if (response.status !== 200) {
+                return;
+            }
+            commentsArray.unshift(response.data);
+            displayCommentsList(commentsArray, conversationComments);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     form.reset();
 };
 

@@ -146,4 +146,32 @@
     &__text {
         margin-top: 1.6rem;
     }
+
+    &__action {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__delete {
+        border: none;
+        background-color: transparent;
+        background-image: url(../../assets/icons/SVG/icon-delete.svg);
+        background-repeat: no-repeat;
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+    }
+}
+
+.like {
+    &__btn {
+        border: none;
+        background-color: transparent;
+        background-image: url(../../assets/icons/SVG/icon-like.svg);
+        background-repeat: no-repeat;
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+
+    }
 }
