@@ -113,6 +113,9 @@ conversationComments.addEventListener('click', (e) => {
         axios
             .put(`https://project-1-api.herokuapp.com/comments/${e.target.dataset.commentId}/like?api_key=${apiKey}`)
             .then((response) => {
+                if (response.status !== 200) {
+                    return;
+                }
                 commentsArray = replaceComment(commentsArray, e.target.dataset.commentId, response.data);
                 displayCommentsList(commentsArray, conversationComments);
             })
