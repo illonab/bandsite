@@ -836,7 +836,7 @@ a:active {
 .conversation__delete {
   border: none;
   background-color: transparent;
-  background-image: url(../../assets/icons/SVG/icon-delete.svg);
+  background-image: url(assets/icons/SVG/icon-delete.svg);
   background-repeat: no-repeat;
   width: 2rem;
   height: 2rem;
@@ -849,7 +849,7 @@ a:active {
 .like__btn {
   border: none;
   background-color: transparent;
-  background-image: url(../../assets/icons/SVG/icon-like.svg);
+  background-image: url(assets/icons/SVG/icon-like.svg);
   background-repeat: no-repeat;
   width: 2rem;
   height: 2rem;
