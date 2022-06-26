@@ -64,7 +64,15 @@ const displayShowsList = (shows, container) => {
         innerText: 'Location'
     });
 
-    showsLabels.append(showsDateLabelTablet, showsVenueLabelTablet, showsLocationLabelTablet);
+    // this button is needed to align headers of the table with the content
+
+    const showsBuy = createElement({
+        tagName: 'a',
+        classes: ['cta-button', 'shows__label--buy'],
+        innerText: 'Buy tickets'
+    });
+
+    showsLabels.append(showsDateLabelTablet, showsVenueLabelTablet, showsLocationLabelTablet, showsBuy);
     container.append(showsLabels);
 
     for (const show of shows) {
