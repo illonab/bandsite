@@ -1,4 +1,4 @@
-@use "mixins" as mixins;
+@use "../mixins" as mixins;
 
 .conversation {
     @include mixins.section-spacing;
@@ -150,6 +150,7 @@
     &__actions {
         display: flex;
         justify-content: space-between;
+        margin-top: 1.6rem;
     }
 
     &__delete {
@@ -161,9 +162,12 @@
         height: 2rem;
         cursor: pointer;
     }
+
 }
 
 .like {
+    display: flex;
+
     &__btn {
         border: none;
         background-color: transparent;
@@ -172,6 +176,8 @@
         width: 2rem;
         height: 2rem;
         cursor: pointer;
+        margin-right: 0.6rem;
+
 
     }
 }
