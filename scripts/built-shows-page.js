@@ -1,72 +1,35 @@
 const showsSchedule = document.querySelector('.shows__schedule');
-const apiKey = '1c327bae-89e0-482d-9116-47630351a017';
-const SHOWS_API = `https://project-1-api.herokuapp.com/showdates?api_key=${apiKey}`;
-
-let showsArray = [];
-
-axios
-    .get(SHOWS_API)
-    .then((data) => {
-        console.log(data);
-        showsArray = data.data;
-        displayShowsList(showsArray, showsSchedule);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-
-const monthDiff = (d1, d2) => {
-    let months;
-    months = (d2.getFullYear() - d1.getFullYear()) * 12;
-    months -= d1.getMonth();
-    months += d2.getMonth();
-    return months <= 0 ? 0 : months;
-};
 
 const displayShow = (show, container) => {
-    const showsShow = document.createElement('article');
-    showsShow.classList.add('shows__show');
+    const showsShow = createElement({ tagName: 'article', classes: ['shows__show'] });
 
-    const showsDateLabel = document.createElement('p');
-    showsDateLabel.classList.add('shows__label');
-    showsDateLabel.innerText = 'Date';
+    const showsDateLabel = createElement({ tagName: 'p', classes: ['shows__label'], innerText: 'Date' });
 
-    const showsTimeText = document.createElement('time');
-    showsTimeText.classList.add('shows__text', 'shows__text--date');
+    const showsTimeText = createElement({
+        tagName: 'time',
+        classes: ['shows__text', 'shows__text--date'],
+        innerText: formatDateString(+show.date)
+    });
+    showsTimeText.setAttribute('title', new Date(+show.date));
 
-    const timestampDate = new Date(+show.date);
+    const showsVenueLabel = createElement({ tagName: 'p', classes: ['shows__label'], innerText: 'Venue' });
 
-    if (monthDiff(timestampDate, new Date()) < 1) {
-        showsTimeText.innerText = timeago.format(timestampDate);
-        showsTimeText.setAttribute('title', timestampDate);
-    } else {
-        showsTimeText.innerText = timestampDate.toLocaleDateString('en-US', {
-            month: '2-digit',
-            day: '2-digit',
-            year: 'numeric'
-        });
-    }
+    const showsVenueText = createElement({
+        tagName: 'p',
+        classes: ['shows__text', 'shows__text--venue'],
+        innerText: show.place
+    });
 
-    const showsVenueLabel = document.createElement('p');
-    showsVenueLabel.classList.add('shows__label');
-    showsVenueLabel.innerText = 'Venue';
+    const showsLocationLabel = createElement({ tagName: 'p', classes: ['shows__label'], innerText: 'Location' });
 
-    const showsVenueText = document.createElement('p');
-    showsVenueText.classList.add('shows__text', 'shows__text--venue');
-    showsVenueText.innerText = `${show.place}`;
+    const showsText = createElement({
+        tagName: 'p',
+        classes: ['shows__text', 'shows__text--location'],
+        innerText: show.location
+    });
 
-    const showsLocationLabel = document.createElement('p');
-    showsLocationLabel.classList.add('shows__label');
-    showsLocationLabel.innerText = 'Location';
-
-    const showsText = document.createElement('p');
-    showsText.classList.add('shows__text', 'shows__text--location');
-    showsText.innerText = `${show.location}`;
-
-    const showsBuy = document.createElement('a');
-    showsBuy.classList.add('cta-button', 'shows__buy');
+    const showsBuy = createElement({ tagName: 'a', classes: ['cta-button', 'shows__buy'], innerText: 'Buy tickets' });
     showsBuy.setAttribute('href', '#');
-    showsBuy.innerText = 'Buy tickets';
 
     showsShow.append(
         showsDateLabel,
@@ -82,17 +45,25 @@ const displayShow = (show, container) => {
 };
 
 const displayShowsList = (shows, container) => {
-    const showsLabels = document.createElement('div');
-    showsLabels.classList.add('shows__labels');
-    const showsDateLabelTablet = document.createElement('p');
-    showsDateLabelTablet.classList.add('shows__label', 'shows__label--tablet');
-    showsDateLabelTablet.innerText = 'Date';
-    const showsVenueLabelTablet = document.createElement('p');
-    showsVenueLabelTablet.classList.add('shows__label', 'shows__label--tablet');
-    showsVenueLabelTablet.innerText = 'Venue';
-    const showsLocationLabelTablet = document.createElement('p');
-    showsLocationLabelTablet.classList.add('shows__label', 'shows__label--tablet');
-    showsLocationLabelTablet.innerText = 'Location';
+    const showsLabels = createElement({ tagName: 'div', classes: ['shows__labels'] });
+    const showsDateLabelTablet = createElement({
+        tagName: 'p',
+        classes: ['shows__label', 'shows__label--tablet'],
+        innerText: 'Date'
+    });
+
+    const showsVenueLabelTablet = createElement({
+        tagName: 'p',
+        classes: ['shows__label', 'shows__label--tablet'],
+        innerText: 'Venue'
+    });
+
+    const showsLocationLabelTablet = createElement({
+        tagName: 'p',
+        classes: ['shows__label', 'shows__label--tablet'],
+        innerText: 'Location'
+    });
+
     showsLabels.append(showsDateLabelTablet, showsVenueLabelTablet, showsLocationLabelTablet);
     container.append(showsLabels);
 
@@ -114,3 +85,12 @@ showsSchedule.addEventListener('click', (e) => {
 
     showsShow.classList.add('shows__show--selected');
 });
+
+axios
+    .get(SHOWS_API)
+    .then((data) => {
+        displayShowsList(data.data, showsSchedule);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
