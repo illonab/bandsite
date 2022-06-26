@@ -172,20 +172,20 @@ a:active {
     width: 128rem;
   }
 }
-@media screen and (min-width: 768px) {
-  .footer__wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto auto;
-    grid-template-areas: "social-title social-icons logo" "employee employee employee" "copyright copyright copyright";
+@media screen and (min-width: 1280px) {
+  .footer__main {
+    display: flex;
   }
 }
-@media screen and (min-width: 1280px) {
-  .footer__wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto auto;
-    grid-template-areas: "social-title social-icons social-icons logo" "employee employee employee employee" "copyright copyright copyright copyright";
+.footer__left {
+  flex: 8;
+}
+.footer__right {
+  flex: 2;
+}
+@media screen and (min-width: 768px) {
+  .footer__top {
+    display: flex;
   }
 }
 .footer__title {
@@ -204,7 +204,7 @@ a:active {
 @media screen and (min-width: 768px) {
   .footer__title {
     padding-bottom: 0;
-    grid-area: social-title;
+    flex: 1;
   }
 }
 .footer__icons {
@@ -213,7 +213,7 @@ a:active {
 }
 @media screen and (min-width: 768px) {
   .footer__icons {
-    grid-area: social-icons;
+    flex: 1;
   }
 }
 .footer__icon {
@@ -233,17 +233,40 @@ a:active {
   }
 }
 .footer__logo {
-  grid-area: logo;
-  display: flex;
-  align-items: center;
-  padding-top: 4.8rem;
+  display: block;
+  margin: 4.8rem 0 1.6rem 0;
   width: 12rem;
   height: 2rem;
 }
 @media screen and (min-width: 768px) {
   .footer__logo {
+    display: none;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .footer__logo {
+    display: flex;
+    align-self: flex-end;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+}
+.footer__logo--top {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .footer__logo--top {
+    display: flex;
     padding-top: 0;
-    height: 100%;
+    flex: 1;
+    justify-content: end;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .footer__logo--top {
+    visibility: hidden;
   }
 }
 .footer__copyright {
@@ -264,9 +287,20 @@ a:active {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .employees {
+    display: flex;
+  }
+}
+
 .employee {
   font-size: 1.3rem;
   line-height: 1.8rem;
+}
+@media screen and (min-width: 768px) {
+  .employee {
+    flex: 1;
+  }
 }
 @media screen and (min-width: 768px) {
   .employee {
@@ -788,6 +822,34 @@ a:active {
 .conversation__text {
   margin-top: 1.6rem;
 }
+.conversation__actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.6rem;
+}
+.conversation__delete {
+  border: none;
+  background-color: transparent;
+  background-image: url(../../assets/icons/SVG/icon-delete.svg);
+  background-repeat: no-repeat;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.like {
+  display: flex;
+}
+.like__btn {
+  border: none;
+  background-color: transparent;
+  background-image: url(../../assets/icons/SVG/icon-like.svg);
+  background-repeat: no-repeat;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  margin-right: 0.6rem;
+}
 
 .shows {
   padding: 2.4rem 0 1.6rem 0;
@@ -884,6 +946,10 @@ a:active {
   text-transform: uppercase;
   font-family: inherit;
 }
+.shows__label--buy {
+  flex: 0 0 auto;
+  visibility: hidden;
+}
 @media screen and (min-width: 768px) {
   .shows__label {
     font-size: 1.2rem;
@@ -895,7 +961,7 @@ a:active {
   }
   .shows__label--tablet {
     display: block;
-    width: 25%;
+    flex: 1;
   }
 }
 .shows__text {
@@ -918,21 +984,21 @@ a:active {
 }
 @media screen and (min-width: 768px) {
   .shows__text--date {
-    width: 25%;
+    flex: 1;
   }
 }
 @media screen and (min-width: 768px) {
   .shows__text--venue {
-    width: 25%;
+    flex: 1;
   }
 }
 @media screen and (min-width: 768px) {
   .shows__text--location {
-    width: 25%;
+    flex: 1;
   }
 }
 .shows__buy {
-  width: 100%;
+  flex: 0 0 auto;
   margin-top: 1.6rem;
   display: flex;
   align-items: center;
@@ -940,7 +1006,6 @@ a:active {
 }
 @media screen and (min-width: 768px) {
   .shows__buy {
-    width: 25%;
     margin-top: 0;
   }
 }/*# sourceMappingURL=bio.css.map */

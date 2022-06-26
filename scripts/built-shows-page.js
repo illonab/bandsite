@@ -1,68 +1,35 @@
-const showsArray = [
-    {
-        date: 'Mon Sept 06 2021',
-        venue: 'Ronald Lane',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Tue Sept 21 2021',
-        venue: 'Pier 3 East',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Fri Oct 15 2021',
-        venue: 'View Lounge',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Sat Nov 06 2021',
-        venue: 'Hyatt Agency',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Fri Nov 26 2021',
-        venue: 'Moscow Center',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Wed Dec 15 2021',
-        venue: 'Press Club',
-        location: 'San Francisco, CA'
-    }
-];
+const showsSchedule = document.querySelector('.shows__schedule');
 
 const displayShow = (show, container) => {
-    const showsShow = document.createElement('article');
-    showsShow.classList.add('shows__show');
+    const showsShow = createElement({ tagName: 'article', classes: ['shows__show'] });
 
-    const showsDateLabel = document.createElement('p');
-    showsDateLabel.classList.add('shows__label');
-    showsDateLabel.innerText = 'Date';
+    const showsDateLabel = createElement({ tagName: 'p', classes: ['shows__label'], innerText: 'Date' });
 
-    const showsTimeText = document.createElement('time');
-    showsTimeText.classList.add('shows__text', 'shows__text--date');
-    showsTimeText.innerText = `${show.date}`;
+    const showsTimeText = createElement({
+        tagName: 'time',
+        classes: ['shows__text', 'shows__text--date'],
+        innerText: formatDateString(+show.date)
+    });
+    showsTimeText.setAttribute('title', new Date(+show.date));
 
-    const showsVenueLabel = document.createElement('p');
-    showsVenueLabel.classList.add('shows__label');
-    showsVenueLabel.innerText = 'Venue';
+    const showsVenueLabel = createElement({ tagName: 'p', classes: ['shows__label'], innerText: 'Venue' });
 
-    const showsVenueText = document.createElement('p');
-    showsVenueText.classList.add('shows__text', 'shows__text--venue');
-    showsVenueText.innerText = `${show.venue}`;
+    const showsVenueText = createElement({
+        tagName: 'p',
+        classes: ['shows__text', 'shows__text--venue'],
+        innerText: show.place
+    });
 
-    const showsLocationLabel = document.createElement('p');
-    showsLocationLabel.classList.add('shows__label');
-    showsLocationLabel.innerText = 'Location';
+    const showsLocationLabel = createElement({ tagName: 'p', classes: ['shows__label'], innerText: 'Location' });
 
-    const showsText = document.createElement('p');
-    showsText.classList.add('shows__text', 'shows__text--location');
-    showsText.innerText = `${show.location}`;
+    const showsText = createElement({
+        tagName: 'p',
+        classes: ['shows__text', 'shows__text--location'],
+        innerText: show.location
+    });
 
-    const showsBuy = document.createElement('a');
-    showsBuy.classList.add('cta-button', 'shows__buy');
+    const showsBuy = createElement({ tagName: 'a', classes: ['cta-button', 'shows__buy'], innerText: 'Buy tickets' });
     showsBuy.setAttribute('href', '#');
-    showsBuy.innerText = 'Buy tickets';
 
     showsShow.append(
         showsDateLabel,
@@ -78,27 +45,40 @@ const displayShow = (show, container) => {
 };
 
 const displayShowsList = (shows, container) => {
-    const showsLabels = document.createElement('div');
-    showsLabels.classList.add('shows__labels');
-    const showsDateLabelTablet = document.createElement('p');
-    showsDateLabelTablet.classList.add('shows__label', 'shows__label--tablet');
-    showsDateLabelTablet.innerText = 'Date';
-    const showsVenueLabelTablet = document.createElement('p');
-    showsVenueLabelTablet.classList.add('shows__label', 'shows__label--tablet');
-    showsVenueLabelTablet.innerText = 'Venue';
-    const showsLocationLabelTablet = document.createElement('p');
-    showsLocationLabelTablet.classList.add('shows__label', 'shows__label--tablet');
-    showsLocationLabelTablet.innerText = 'Location';
-    showsLabels.append(showsDateLabelTablet, showsVenueLabelTablet, showsLocationLabelTablet);
+    const showsLabels = createElement({ tagName: 'div', classes: ['shows__labels'] });
+    const showsDateLabelTablet = createElement({
+        tagName: 'p',
+        classes: ['shows__label', 'shows__label--tablet'],
+        innerText: 'Date'
+    });
+
+    const showsVenueLabelTablet = createElement({
+        tagName: 'p',
+        classes: ['shows__label', 'shows__label--tablet'],
+        innerText: 'Venue'
+    });
+
+    const showsLocationLabelTablet = createElement({
+        tagName: 'p',
+        classes: ['shows__label', 'shows__label--tablet'],
+        innerText: 'Location'
+    });
+
+    // this button is needed to align headers of the table with the content
+
+    const showsBuy = createElement({
+        tagName: 'a',
+        classes: ['cta-button', 'shows__label--buy'],
+        innerText: 'Buy tickets'
+    });
+
+    showsLabels.append(showsDateLabelTablet, showsVenueLabelTablet, showsLocationLabelTablet, showsBuy);
     container.append(showsLabels);
 
     for (const show of shows) {
         displayShow(show, container);
     }
 };
-
-const showsSchedule = document.querySelector('.shows__schedule');
-displayShowsList(showsArray, showsSchedule);
 
 // I've used event delegation here - https://javascript.info/event-delegation
 showsSchedule.addEventListener('click', (e) => {
@@ -113,3 +93,12 @@ showsSchedule.addEventListener('click', (e) => {
 
     showsShow.classList.add('shows__show--selected');
 });
+
+axios
+    .get(SHOWS_API)
+    .then((data) => {
+        displayShowsList(data.data, showsSchedule);
+    })
+    .catch((error) => {
+        console.log(error);
+    });

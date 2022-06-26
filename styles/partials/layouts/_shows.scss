@@ -1,4 +1,4 @@
-@use "mixins" as mixins;
+@use "../mixins" as mixins;
 
 .shows {
     @include mixins.section-spacing;
@@ -65,6 +65,12 @@
     }
 
     &__label {
+
+        &--buy {
+            flex: 0 0 auto;
+            visibility: hidden;
+        }
+
         @include mixins.text-label;
 
         @include mixins.tablet {
@@ -72,7 +78,7 @@
 
             &--tablet {
                 display: block;
-                width: 25%;
+                flex: 1;
             }
         }
     }
@@ -89,31 +95,30 @@
         font-weight: 600;
 
         @include mixins.tablet {
-            width: 25%;
+            flex: 1;
         }
     }
 
     &__text--venue {
         @include mixins.tablet {
-            width: 25%;
+            flex: 1;
         }
     }
 
     &__text--location {
         @include mixins.tablet {
-            width: 25%;
+            flex: 1;
         }
     }
 
     &__buy {
-        width: 100%;
+        flex: 0 0 auto;
         margin-top: 1.6rem;
         display: flex;
         align-items: center;
         justify-content: center;
 
         @include mixins.tablet {
-            width: 25%;
             margin-top: 0;
         }
     }

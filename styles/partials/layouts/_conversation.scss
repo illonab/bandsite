@@ -1,4 +1,4 @@
-@use "mixins" as mixins;
+@use "../mixins" as mixins;
 
 .conversation {
     @include mixins.section-spacing;
@@ -145,5 +145,39 @@
 
     &__text {
         margin-top: 1.6rem;
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.6rem;
+    }
+
+    &__delete {
+        border: none;
+        background-color: transparent;
+        background-image: url(../../assets/icons/SVG/icon-delete.svg);
+        background-repeat: no-repeat;
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+    }
+
+}
+
+.like {
+    display: flex;
+
+    &__btn {
+        border: none;
+        background-color: transparent;
+        background-image: url(../../assets/icons/SVG/icon-like.svg);
+        background-repeat: no-repeat;
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+        margin-right: 0.6rem;
+
+
     }
 }
