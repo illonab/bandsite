@@ -8,22 +8,28 @@
     &__wrapper {
         @include mixins.wrapper;
 
-        @include mixins.tablet {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: auto auto auto;
-            grid-template-areas: "social-title social-icons logo"
-                "employee employee employee"
-                "copyright copyright copyright";
-        }
+        @include mixins.tablet {}
 
+        @include mixins.desktop {}
+    }
+
+    &__main {
         @include mixins.desktop {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: auto auto auto;
-            grid-template-areas: "social-title social-icons social-icons logo"
-                "employee employee employee employee"
-                "copyright copyright copyright copyright";
+            display: flex;
+        }
+    }
+
+    &__left {
+        flex: 8;
+    }
+
+    &__right {
+        flex: 2;
+    }
+
+    &__top {
+        @include mixins.tablet {
+            display: flex;
         }
     }
 
@@ -32,7 +38,8 @@
 
         @include mixins.tablet {
             padding-bottom: 0;
-            grid-area: social-title;
+            flex: 1;
+
         }
     }
 
@@ -41,7 +48,7 @@
         align-items: center;
 
         @include mixins.tablet {
-            grid-area: social-icons;
+            flex: 1;
         }
     }
 
@@ -66,16 +73,37 @@
     }
 
     &__logo {
-        grid-area: logo;
-        display: flex;
-        align-items: center;
-        padding-top: 4.8rem;
+        display: block;
+        margin: 4.8rem 0 1.6rem 0;
         width: 12rem;
         height: 2rem;
 
         @include mixins.tablet {
-            padding-top: 0;
-            height: 100%;
+            display: none;
+        }
+
+        @include mixins.desktop {
+            display: flex;
+            align-self: flex-end;
+            margin-top: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        &--top {
+            display: none;
+
+            @include mixins.tablet {
+                display: flex;
+                padding-top: 0;
+                flex: 1;
+                justify-content: end;
+                margin-top: 1.5rem;
+                margin-bottom: 0;
+            }
+
+            @include mixins.desktop {
+                visibility: hidden;
+            }
         }
     }
 
@@ -90,7 +118,17 @@
     }
 }
 
+.employees {
+    @include mixins.tablet {
+        display: flex;
+    }
+}
+
 .employee {
+    @include mixins.tablet {
+        flex: 1;
+    }
+
     @include mixins.text;
 
     &__content {
