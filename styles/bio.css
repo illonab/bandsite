@@ -631,6 +631,9 @@ a:active {
   filter: grayscale(1);
   transition: filter 250ms linear;
 }
+.gallery__image + .gallery__image {
+  margin-top: 1.6rem;
+}
 .gallery__image:hover {
   filter: grayscale(0);
 }
@@ -639,6 +642,9 @@ a:active {
     padding-bottom: 0;
     width: calc(33.3333333333% - 1.0666666667rem);
     margin-bottom: 1.6rem;
+  }
+  .gallery__image + .gallery__image {
+    margin-top: 0;
   }
 }
 
@@ -939,6 +945,7 @@ a:active {
   }
 }
 .shows__label {
+  padding-top: 1.6rem;
   font-size: 1rem;
   line-height: 2rem;
   font-weight: 600;
